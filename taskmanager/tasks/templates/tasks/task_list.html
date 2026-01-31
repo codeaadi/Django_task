@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tasks</title>
+</head>
+<body>
+
+<h2>My Tasks</h2>
+
+<p>
+    Welcome {{ request.user.username }} |
+    <a href="{% url 'logout' %}">Logout</a>
+</p>
+
+<a href="{% url 'task_create' %}">➕ Add Task</a>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }}
+            {% if task.completed %} ✅ {% endif %}
+
+            | <a href="{% url 'task_update' task.pk %}">Edit</a>
+            | <a href="{% url 'task_delete' task.pk %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No tasks yet</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
+
