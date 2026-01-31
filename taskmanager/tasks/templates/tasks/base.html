@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Task Manager{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+        a {
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    {% if request.user.is_authenticated %}
+        <p>
+            👋 {{ request.user.username }} |
+            <a href="{% url 'task_list' %}">Home</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </p>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+    {% endif %}
+    <hr>
+</header>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

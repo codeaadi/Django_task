@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Signup</title>
-</head>
-<body>
-    <h2>Signup</h2>
+{% extends 'tasks/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create Account</button>
-    </form>
+{% block title %}Signup{% endblock %}
 
-    <p>
-        Already have an account?
-        <a href="{% url 'login' %}">Login</a>
-    </p>
-</body>
-</html>
+{% block content %}
+<h2>Signup</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Account</button>
+</form>
+{% endblock %}

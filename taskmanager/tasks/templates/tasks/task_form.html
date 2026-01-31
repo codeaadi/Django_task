@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Task</title>
-</head>
-<body>
-    <h2>Add Task</h2>
+{% extends 'tasks/base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
+{% block title %}Task Form{% endblock %}
 
-    <a href="{% url 'task_list' %}">Back</a>
-</body>
-</html>
+{% block content %}
+<h2>Task</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'task_list' %}">Back</a>
+{% endblock %}
